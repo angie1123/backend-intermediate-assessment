@@ -1,0 +1,13 @@
+body {
+  overflow: hidden;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.position-relative:hover .overlay {
+  opacity: 1;
+}
