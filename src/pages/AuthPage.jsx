@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { auth ,db} from "../../firebase";
@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 import axios from "axios";
 
-
+//using hongangie0@gmail.com neon postgres
+//replit hongangie06@gmail.com
 export default function AuthPage() {
 
   const [showModal, setShowModal] = useState(false)
@@ -17,7 +18,7 @@ export default function AuthPage() {
   
   const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
-  const API_URL='https://5a25c5bb-6987-4144-9500-dda89b9533d9-00-tx4rh801rb2o.pike.replit.dev'
+  const API_URL='https://hotel-booking-api-omega.vercel.app'
   
   useEffect(() => {
      if (currentUser) {
@@ -124,6 +125,7 @@ export default function AuthPage() {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password)
       console.log(res)
+      navigate("/history")
     } catch (error) {
       console.error(error)
     }
@@ -143,15 +145,7 @@ export default function AuthPage() {
   }
 
   
-  const facebookProvider = new FacebookAuthProvider()
-  const handleFacebookLogin = async (e) => {
-    e.preventDefault()
-    try {
-      await signInWithPopup(auth, facebookProvider)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+
 
   return (
     <>
@@ -199,7 +193,7 @@ export default function AuthPage() {
               </Button>
             </Col>
             <Col className="d-flex justify-content-center">
-                <Button onClick={handleFacebookLogin} variant="light" className="p-3">
+                <Button  variant="light" className="p-3">
                 <i className="bi bi-facebook"></i> 
               </Button>
             </Col>

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 
-const API_URL = "https://5a25c5bb-6987-4144-9500-dda89b9533d9-00-tx4rh801rb2o.pike.replit.dev"
+const API_URL = "https://hotel-booking-api-omega.vercel.app"
 export const createBooking = createAsyncThunk(
   "bookings/createBooking",
   async ({ room_type, checkin_date,checkout_date, phone_number, email,user_id }) => {
